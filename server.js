@@ -52,6 +52,18 @@ app.post('/api/delete-row', (req, res) => {
   return res.json({ success: true });
 });
 
+// server.js
+
+app.get('/health', (req, res) => {
+  // You can add more checks here later if needed (e.g., DB connection)
+  return res.status(200).json({
+    status: 'ok',
+    message: 'Backend is healthy',
+    uptime: process.uptime(),
+    timestamp: new Date().toISOString()
+  });
+});
+
 app.listen(PORT, () => {
   console.log(`Backend running on http://localhost:${PORT}`);
 });
